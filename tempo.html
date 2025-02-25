@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Relógio Personalizado</title>
+</head>
+<body> 
+
+<div class="horas">
+    <h1>Fazem...</h1>
+
+    <div class="clock" id="clock">00:00:00</div>
+
+    <h1>desde que começamos a NAMORAR</h1>
+</div>
+
+    <script>
+        function updateClock() {
+            const startDate = new Date("2024-07-12T00:00:00"); 
+            const now = new Date(); 
+            const diffInSeconds = Math.floor((now - startDate) / 1000); 
+            
+            let days = String(Math.floor(diffInSeconds / 86400)).padStart(2, '0');
+            let hours = String(Math.floor((diffInSeconds % 86400) / 3600)).padStart(2, '0');
+            let minutes = String(Math.floor((diffInSeconds % 3600) / 60)).padStart(2, '0');
+            let seconds = String(diffInSeconds % 60).padStart(2, '0');
+            
+            document.getElementById("clock").textContent = `${days} Dias | ${hours} Hrs | ${minutes} Mins | ${seconds} s.`;
+        }
+        
+        setInterval(updateClock, 1000);
+        updateClock(); 
+    </script>
+</body>
+</html>
